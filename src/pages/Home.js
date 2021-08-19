@@ -1,15 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Header, Footer } from '../components'
+import { Contact, Header, Footer } from '../components'
 
 const Container = styled.div``
 
-export default function Home() {
+export default function Home({ cart }) {
   return (
     <Container>
-      <Header />
+      <Header cart={cart} />
       Home
-      <Footer />
+      <Footer>
+        <Contact />
+      </Footer>
     </Container>
   )
 }
