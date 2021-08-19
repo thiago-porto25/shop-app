@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Switch, Route } from 'react-router-dom'
 import Cart from './pages/Cart'
 import Home from './pages/Home'
@@ -8,11 +7,9 @@ import Product from './pages/Product'
 import Shop from './pages/Shop'
 import * as ROUTES from './constants/Routes'
 
-const Container = styled.div``
-
 function App() {
   return (
-    <Container>
+    <>
       <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home />
@@ -30,7 +27,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-    </Container>
+    </>
   )
 }
 
