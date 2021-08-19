@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { globalStyle as GlobalStyle } from './globalStyles'
 import About from './pages/About'
 import Cart from './pages/Cart'
 import Home from './pages/Home'
@@ -12,6 +13,7 @@ function App() {
   const [cart, setCart] = useState([])
   return (
     <>
+      <GlobalStyle />
       <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home cart={cart} />
