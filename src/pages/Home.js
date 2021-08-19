@@ -44,6 +44,76 @@ const TextContainer = styled.div`
   align-items: center;
 `
 
+const SecondSection = styled(Section)`
+  background-color: #444444;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  color: #d8c3a5;
+  min-height: 100vh;
+  height: fit-content;
+
+  header {
+    font-size: 52px;
+    font-weight: bold;
+    padding-top: 50px;
+  }
+
+  p {
+    width: 60%;
+    text-align: justify;
+    margin-bottom: 40px;
+  }
+
+  hr {
+    color: #e85a4f;
+    background-color: #e85a4f;
+    width: 200px;
+    height: 5px;
+  }
+`
+
+const ProductsContainer = styled.div`
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  padding-bottom: 50px;
+
+  div {
+    width: 250px;
+    height: 250px;
+    background-color: #d8c3a5;
+    color: #e85a4f;
+    box-shadow: 0px 0px 10px #e85a4f66;
+    padding: 15px 15px 15px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 70px;
+    }
+
+    h2 {
+      word-wrap: break-word;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      word-wrap: break-word;
+      text-align: center;
+      width: auto;
+    }
+  }
+`
+
 export default function Home({ cart }) {
   return (
     <Container>
@@ -58,8 +128,50 @@ export default function Home({ cart }) {
             <ShopButton>Shop now</ShopButton>
           </Link>
         </TextContainer>
-        <Image src="/images/backgrounds/background1.jpg" />
+        <Image
+          src="/images/backgrounds/background1.jpg"
+          alt="A vinil player in a white background"
+        />
       </FirstSection>
+      <SecondSection>
+        <header>
+          Our Diferencial
+          <br />
+          <hr />
+        </header>
+        <p>
+          Cras ut sem tincidunt mi finibus aliquet. Pellentesque a sapien ex.
+          Proin non suscipit nisi, eu laoreet lorem. Donec non risus sit amet
+          leo malesuada ultrices. Pellentesque eget lobortis ex. Phasellus
+          ultrices nec sapien at sodales. Ut ac varius dolor.
+        </p>
+        <ProductsContainer>
+          <div>
+            <i className="fas fa-shipping-fast"></i>
+            <h2>Fast Shipping</h2>
+            <p>
+              Quisque et tristique lacus. Quisque tristique finibus ante sit
+              amet mollis.
+            </p>
+          </div>
+          <div>
+            <i className="fas fa-award"></i>
+            <h2>Best Quality Products</h2>
+            <p>
+              Suspendisse in laoreet quam. Quisque non diam placerat, placerat
+              lacus ut.
+            </p>
+          </div>
+          <div>
+            <i className="fas fa-globe-americas"></i>
+            <h2>Worldwide Shipping</h2>
+            <p>
+              Cras ut sem tincidunt mi finibus aliquet. Pellentesque a sapien
+              ex.
+            </p>
+          </div>
+        </ProductsContainer>
+      </SecondSection>
       <Footer>
         <Contact />
       </Footer>
