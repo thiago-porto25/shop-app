@@ -3,6 +3,21 @@ import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/Routes'
 import styled from 'styled-components'
 
+const CartCounter = styled.div`
+  background-color: #e85a4f;
+  font-size: 12px;
+  color: black !important;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  text-align: center;
+  transform: translateX(-20px);
+  padding-top: 3px;
+  padding-right: 1.5px;
+  padding-left: 1.5px;
+`
+
 const Container = styled.nav`
   background-color: black;
   height: 6rem;
@@ -31,7 +46,7 @@ const List = styled.ul`
   margin: 0;
 
   & * {
-    margin-left: 30px;
+    margin-left: 40px;
     text-decoration: none;
     list-style: none;
     color: #e85a4f;
@@ -40,14 +55,24 @@ const List = styled.ul`
     &:hover {
       color: #d8c3a5;
     }
+
+    &:hover > ${CartCounter} {
+      background-color: #d8c3a5;
+    }
   }
 `
 
 const ListItem = styled.li`
+  margin-left: 0;
   font-size: 20px;
+
+  i {
+    margin-left: 0;
+    position: relative;
+  }
 `
 
-export default function Header(props) {
+export default function Header({ cart }) {
   return (
     <Container>
       <Logo>
@@ -65,7 +90,9 @@ export default function Header(props) {
         </Link>
         <Link to={ROUTES.CART}>
           <ListItem>
-            <i className="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart">
+              <CartCounter>{cart.length}</CartCounter>
+            </i>
           </ListItem>
         </Link>
       </List>
