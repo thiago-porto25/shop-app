@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import About from './pages/About'
 import Cart from './pages/Cart'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -8,23 +9,27 @@ import Shop from './pages/Shop'
 import * as ROUTES from './constants/Routes'
 
 function App() {
+  const [cart, setCart] = useState([])
   return (
     <>
       <Switch>
         <Route exact path={ROUTES.HOME}>
-          <Home />
+          <Home cart={cart} />
         </Route>
         <Route exact path={ROUTES.SHOP}>
-          <Shop />
+          <Shop cart={cart} />
+        </Route>
+        <Route path={ROUTES.ABOUT}>
+          <About cart={cart} />
         </Route>
         <Route path={ROUTES.PRODUCT}>
-          <Product />
+          <Product cart={cart} setCart={setCart} />
         </Route>
         <Route path={ROUTES.CART}>
-          <Cart />
+          <Cart cart={cart} setCart={setCart} />
         </Route>
         <Route path={ROUTES.NOT_FOUND}>
-          <NotFound />
+          <NotFound cart={cart} />
         </Route>
       </Switch>
     </>

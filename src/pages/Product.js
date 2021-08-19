@@ -4,10 +4,10 @@ import { Header, Footer } from '../components'
 
 const Container = styled.div``
 
-export default function Product() {
+export default function Product({ cart }) {
   return (
     <Container>
-      <Header />
+      <Header cart={cart} />
       Product
       <Footer />
     </Container>

@@ -4,10 +4,10 @@ import { Header, Footer } from '../components'
 
 const Container = styled.div``
 
-export default function NotFound() {
+export default function NotFound({ cart }) {
   return (
     <Container>
-      <Header />
+      <Header cart={cart} />
       Not Found
       <Footer />
     </Container>
