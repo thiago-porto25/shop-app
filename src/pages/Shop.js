@@ -1,5 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
+import { Header, Footer } from '../components'
+
+const Container = styled.div``
 
 export default function Shop() {
-  return <div>I'm Shop</div>
+  return (
+    <Container>
+      <Header />
+      Shop
+      <Footer />
+    </Container>
+  )
 }
