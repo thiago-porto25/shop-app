@@ -45,12 +45,12 @@ const TextContainer = styled.div`
 `
 
 const SecondSection = styled(Section)`
-  background-color: #444444;
+  background: linear-gradient(120deg, #000000, #333333);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  color: #d8c3a5;
+  color: #e85a4f;
   min-height: 100vh;
   height: fit-content;
 
@@ -67,26 +67,32 @@ const SecondSection = styled(Section)`
   }
 
   hr {
-    color: #e85a4f;
-    background-color: #e85a4f;
+    color: #d8c3a5;
+    background-color: #d8c3a5;
     width: 200px;
     height: 5px;
   }
 `
 
 const ProductsContainer = styled.div`
-  width: 100%;
+  width: 90%;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   padding-bottom: 50px;
+  height: fit-content;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+  }
 
   div {
     width: 250px;
     height: 250px;
-    background-color: #d8c3a5;
     color: #e85a4f;
-    box-shadow: 0px 0px 10px #e85a4f66;
+    box-shadow: 0px 0px 10px #e85a4f22;
     padding: 15px 15px 15px 15px;
     border-radius: 5px;
     display: flex;
@@ -112,6 +118,19 @@ const ProductsContainer = styled.div`
       width: auto;
     }
   }
+`
+
+const ThirdSection = styled(Section)`
+  background: linear-gradient(120deg, #999999, #ffffff);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+`
+
+const ReviewsContainer = styled.div`
+  display: flex;
+  width: 80%;
 `
 
 export default function Home({ cart }) {
@@ -172,6 +191,14 @@ export default function Home({ cart }) {
           </div>
         </ProductsContainer>
       </SecondSection>
+      <ThirdSection>
+        <header>
+          Customer Reviews
+          <br />
+          <hr />
+        </header>
+        <ReviewsContainer></ReviewsContainer>
+      </ThirdSection>
       <Footer>
         <Contact />
       </Footer>
