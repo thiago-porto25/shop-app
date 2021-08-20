@@ -4,6 +4,7 @@ import * as ROUTES from '../constants/Routes'
 import styled from 'styled-components'
 
 const CartCounter = styled.div`
+  z-index: 10;
   background-color: #e85a4f;
   font-size: 12px;
   color: black !important;
@@ -81,9 +82,6 @@ export default function Header({ cart }) {
       <List>
         <Link to={ROUTES.HOME}>
           <ListItem>Home</ListItem>
-        </Link>
-        <Link to={ROUTES.ABOUT}>
-          <ListItem>About</ListItem>
         </Link>
         <Link to={ROUTES.SHOP}>
           <ListItem>Shop</ListItem>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { globalStyle as GlobalStyle } from './globalStyles'
-import About from './pages/About'
 import Cart from './pages/Cart'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -20,9 +19,6 @@ function App() {
         </Route>
         <Route exact path={ROUTES.SHOP}>
           <Shop cart={cart} />
-        </Route>
-        <Route path={ROUTES.ABOUT}>
-          <About cart={cart} />
         </Route>
         <Route path={ROUTES.PRODUCT}>
           <Product cart={cart} setCart={setCart} />

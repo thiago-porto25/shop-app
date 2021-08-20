@@ -1,5 +1,3 @@
-export const ABOUT = '/about'
-
 export const CART = '/cart'
 
 export const HOME = '/'
