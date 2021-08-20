@@ -126,11 +126,60 @@ const ThirdSection = styled(Section)`
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+
+  header {
+    font-size: 52px;
+    font-weight: bold;
+
+    hr {
+      color: black;
+      background-color: black;
+      width: 200px;
+      height: 5px;
+    }
+  }
 `
 
 const ReviewsContainer = styled.div`
   display: flex;
   width: 80%;
+  justify-content: space-around;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 30%;
+    min-width: 150px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 8px #00000066;
+
+    p {
+      margin: 20px;
+      text-align: justify;
+    }
+
+    img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    h3 {
+      margin: 10px;
+      margin-bottom: 0;
+    }
+
+    h5 {
+      font-weight: normal;
+      margin: 10px;
+      margin-bottom: 30px;
+    }
+  }
 `
 
 export default function Home({ cart }) {
@@ -197,7 +246,49 @@ export default function Home({ cart }) {
           <br />
           <hr />
         </header>
-        <ReviewsContainer></ReviewsContainer>
+        <ReviewsContainer>
+          <div>
+            <p>
+              Donec egestas odio eu ligula aliquet, volutpat lobortis ipsum
+              iaculis. Integer sed dui sed enim varius egestas. Ut aliquet arcu
+              eu interdum elementum. Curabitur lacinia mauris eu placerat
+              auctor.
+            </p>
+            <img
+              src="/images/backgrounds/profile1.jpg"
+              alt="Customer profile"
+            />
+            <h3>Azubu Mafu</h3>
+            <h5>Rio de Janeiro, BR</h5>
+          </div>
+          <div>
+            <p>
+              Suspendisse lacinia tincidunt magna sed sagittis. Etiam sed congue
+              mauris. In hac habitasse platea dictumst. Cras efficitur sapien
+              eget turpis faucibus imperdiet. In hac habitasse platea dictumst.
+            </p>
+            <img
+              src="/images/backgrounds/profile2.jpg"
+              alt="Customer profile"
+            />
+            <h3>Alexander Burr</h3>
+            <h5>Hamilton, CA</h5>
+          </div>
+          <div>
+            <p>
+              Nunc tempor arcu in bibendum lacinia. Aenean lobortis pretium
+              lectus, non feugiat tortor scelerisque pharetra. Vivamus
+              consectetur elit gravida pulvinar egestas. Sed nec nibh enim. In
+              sed dictum elit.
+            </p>
+            <img
+              src="/images/backgrounds/profile3.jpg"
+              alt="Customer profile"
+            />
+            <h3>Paul Starr</h3>
+            <h5>London, UK</h5>
+          </div>
+        </ReviewsContainer>
       </ThirdSection>
       <Footer>
         <Contact />
