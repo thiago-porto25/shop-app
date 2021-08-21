@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import * as ROUTES from '../constants/Routes'
 
 const Button = styled.button`
   width: 9rem;
@@ -12,6 +14,13 @@ const Button = styled.button`
   font-weight: bold;
   margin-top: 10px;
   margin-bottom: 30px;
+  cursor: pointer;
+  transition: 200ms ease;
+
+  &:hover {
+    background-color: #e85a4f;
+    color: black;
+  }
 `
 
 const Container = styled.div`
@@ -53,10 +62,6 @@ const ImageContainer = styled.div`
 `
 
 export default function ShopItem({ item }) {
-  const handleClick = () => {
-    console.log('test')
-  }
-
   return (
     <Container>
       <ImageContainer>
@@ -66,7 +71,9 @@ export default function ShopItem({ item }) {
         <h3>{item.name}</h3>
         <p>${(Math.round(item.price * 100) / 100).toFixed(2)}</p>
       </InfoContainer>
-      <Button onClick={handleClick}>Buy</Button>
+      <Link to={`${ROUTES.SHOP}/${item.id}`}>
+        <Button>Buy</Button>
+      </Link>
     </Container>
   )
 }
