@@ -13,12 +13,15 @@ const Container = styled.div`
   height: fit-content;
 `
 
+const CheckoutButton = styled.button``
+
 const Frame = styled.div`
   margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  position: relative;
 `
 
 const Inner = styled.div`
@@ -31,11 +34,26 @@ const Inner = styled.div`
   margin-bottom: 30px;
 `
 
+const Line = styled.hr`
+  width: 75%;
+  color: #555555;
+`
+
 const Total = styled.p`
+  font-size: 20px;
+  font-weight: normal;
+  text-align: right;
   color: white;
 `
 
-const TotalLabel = styled.label``
+const TotalLabel = styled.label`
+  margin-right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  width: 100%;
+  text-align: right;
+  color: white;
+`
 
 export default function Cart({ cart, setCart }) {
   const [total, setTotal] = useState(0)
@@ -54,9 +72,6 @@ export default function Cart({ cart, setCart }) {
     calculateTotal()
   }, [cart])
 
-  console.log(cart)
-  console.log(total)
-
   return (
     <Container>
       <Header cart={cart} />
@@ -71,10 +86,14 @@ export default function Cart({ cart, setCart }) {
             />
           ))}
         </Frame>
+        <Line />
         <Frame>
-          <TotalLabel>Total:</TotalLabel>
-          <Total>${(Math.round(total * 100) / 100).toFixed(2)}</Total>
+          <TotalLabel>
+            Total
+            <Total>${(Math.round(total * 100) / 100).toFixed(2)}</Total>
+          </TotalLabel>
         </Frame>
+        <CheckoutButton>Checkout</CheckoutButton>
       </Inner>
       <Footer />
     </Container>

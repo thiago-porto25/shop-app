@@ -136,6 +136,11 @@ export default function CartItem({ itemInfo, cart, setCart }) {
     setCart(newCart)
   }
 
+  const handleDelete = () => {
+    const newCart = cart.filter((item) => item.id !== itemInfo.id)
+    setCart(newCart)
+  }
+
   return (
     <Container>
       <ImageContainer>
@@ -186,7 +191,7 @@ export default function CartItem({ itemInfo, cart, setCart }) {
         </Plus>
       </QuantityContainer>
       <DeleteItemContainer>
-        <button>
+        <button onClick={handleDelete}>
           <i className="fas fa-trash"></i>
         </button>
       </DeleteItemContainer>
