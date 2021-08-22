@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Header, Footer } from '../components'
+import { CartItem, Header, Footer } from '../components'
 import productsData from '../data/productsData'
 
 const Container = styled.div`
@@ -13,13 +13,22 @@ const Container = styled.div`
   height: fit-content;
 `
 
-const Frame = styled.div``
+const Frame = styled.div`
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`
 
 const Inner = styled.div`
+  border-radius: 5px;
   margin: auto;
   width: 80%;
-  max-width: 800px;
+  max-width: 700px;
   background-color: black;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `
 
 const Total = styled.p`
@@ -33,26 +42,38 @@ export default function Cart({ cart, setCart }) {
 
   useEffect(() => {
     const calculateTotal = () => {
-      let newTotal = total
+      let newTotal = 0
       cart.forEach((item) => {
-        newTotal += productsData[item.id].price * item.quantity
+        newTotal =
+          newTotal +
+          parseInt(productsData[item.id].price, 10) *
+            parseInt(item.quantity, 10)
       })
-      setTotal((Math.round(newTotal * 100) / 100).toFixed(2))
+      setTotal(newTotal)
     }
-
     calculateTotal()
   }, [cart])
 
   console.log(cart)
+  console.log(total)
 
   return (
     <Container>
       <Header cart={cart} />
       <Inner>
-        <Frame></Frame>
+        <Frame>
+          {cart.map((item, i) => (
+            <CartItem
+              key={`${item}-${i}`}
+              itemInfo={item}
+              cart={cart}
+              setCart={setCart}
+            />
+          ))}
+        </Frame>
         <Frame>
           <TotalLabel>Total:</TotalLabel>
-          <Total>${total}</Total>
+          <Total>${(Math.round(total * 100) / 100).toFixed(2)}</Total>
         </Frame>
       </Inner>
       <Footer />
