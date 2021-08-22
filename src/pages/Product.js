@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Header, Footer } from '../components'
-import { useRouteMatch } from 'react-router'
+import { useRouteMatch, useHistory } from 'react-router'
 import productsData from '../data/productsData'
+import * as ROUTES from '../constants/Routes'
 
 const Container = styled.div`
   display: flex;
@@ -84,14 +85,20 @@ const TextContainer = styled.div`
     width: 11rem;
     height: 3.5rem;
     font-size: 25px;
-    transition: 200ms ease-in-out;
+    font-weight: bold;
+    transition: 300ms ease-in-out;
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
 
     i {
       transition: transform 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
     }
 
     &:hover {
-      background-color: #d74b3e;
+      background-color: #c63a2d;
       color: white;
     }
 
@@ -101,9 +108,30 @@ const TextContainer = styled.div`
   }
 `
 
-export default function Product({ cart }) {
-  const match = useRouteMatch()
-  const { id } = match.params
+export default function Product({ cart, setCart }) {
+  const [isCartFull, setIsCartFull] = useState(false)
+  const {
+    params: { id },
+  } = useRouteMatch()
+  const history = useHistory()
+
+  const handleAddToCart = () => {
+    const newCart = cart.map((item) => {
+      if (item.id === id) {
+        item.quantity += 1
+        return item
+      } else return item
+    })
+    const isOldItem = cart.some((item) => item.id === id)
+    if (cart[0] && isOldItem) setCart(newCart)
+    else setCart([...cart, { id, quantity: 1 }])
+
+    history.push(ROUTES.CART)
+  }
+
+  useEffect(() => {
+    if (cart.length >= 20) setIsCartFull(true)
+  }, [cart])
 
   return (
     <Container>
@@ -119,8 +147,16 @@ export default function Product({ cart }) {
               ${(Math.round(productsData[id].price * 100) / 100).toFixed(2)}
             </h3>
             <p>{productsData[id].description}</p>
-            <button>
-              Add <i className="fas fa-shopping-cart"></i>
+            <button disabled={isCartFull} onClick={handleAddToCart}>
+              {isCartFull ? (
+                <>
+                  Full <i className="fas fa-shopping-cart"></i>
+                </>
+              ) : (
+                <>
+                  Add <i className="fas fa-shopping-cart"></i>
+                </>
+              )}
             </button>
           </TextContainer>
         </Frame>

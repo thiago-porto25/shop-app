@@ -5,10 +5,11 @@ import { Header, Footer } from '../components'
 const Container = styled.div``
 
 export default function Cart({ cart, setCart }) {
+  console.log(cart)
   return (
     <Container>
       <Header cart={cart} />
-      Cart
+      <p>{cart[0].id}</p>
       <Footer />
     </Container>
   )
