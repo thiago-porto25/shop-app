@@ -9,13 +9,13 @@ const CartCounter = styled.div`
   font-size: 12px;
   color: black !important;
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   text-align: center;
   transform: translateX(-20px);
   padding-top: 3px;
-  padding-right: 1.5px;
+  padding-right: 2.5px;
   padding-left: 1.5px;
 `
 
@@ -74,6 +74,13 @@ const ListItem = styled.li`
 `
 
 export default function Header({ cart }) {
+  const displayQuantity = () => {
+    let quantity = 0
+    cart.forEach((item) => {
+      if (item.quantity) quantity += item.quantity
+    })
+    return quantity
+  }
   return (
     <Container>
       <Logo>
@@ -89,7 +96,7 @@ export default function Header({ cart }) {
         <Link to={ROUTES.CART}>
           <ListItem>
             <i className="fas fa-shopping-cart">
-              <CartCounter>{cart.length}</CartCounter>
+              <CartCounter>{displayQuantity()}</CartCounter>
             </i>
           </ListItem>
         </Link>
