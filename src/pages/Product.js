@@ -5,19 +5,16 @@ import { useRouteMatch } from 'react-router'
 import productsData from '../data/productsData'
 
 const Container = styled.div`
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: linear-gradient(120deg, #999999, #eeeeee);
-  position: relative;
+  min-height: 100vh;
+  height: fit-content;
 `
 
 const Frame = styled.div`
   display: flex;
-`
-
-const Foot = styled.div`
-  width: 100%;
-  position: absolute;
-  bottom: 0;
 `
 
 const Inner = styled.div`
@@ -78,6 +75,7 @@ const TextContainer = styled.div`
 
   button {
     margin: auto;
+    margin-bottom: 20px;
     background-color: #e85a4f;
     border: none;
     border-radius: 5px;
@@ -127,9 +125,7 @@ export default function Product({ cart }) {
           </TextContainer>
         </Frame>
       </Inner>
-      <Foot>
-        <Footer />
-      </Foot>
+      <Footer />
     </Container>
   )
 }
