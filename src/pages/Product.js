@@ -52,7 +52,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   width: 70%;
-  color: #e85a4f;
+  color: #dddddd;
 
   h1 {
     width: 80%;
