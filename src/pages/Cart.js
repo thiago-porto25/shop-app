@@ -4,12 +4,14 @@ import { Header, Footer } from '../components'
 
 const Container = styled.div``
 
+const Inner = styled.div``
+
 export default function Cart({ cart, setCart }) {
   console.log(cart)
   return (
     <Container>
       <Header cart={cart} />
-      <p>{cart[0].id}</p>
+      <Inner></Inner>
       <Footer />
     </Container>
   )

@@ -7,7 +7,7 @@ import { Contact, Header, Footer, Section } from '../components'
 const Container = styled.div``
 
 const FirstSection = styled(Section)`
-  background: linear-gradient(120deg, #999999, #ffffff);
+  background: linear-gradient(120deg, #333333, #aaaaaa);
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -31,7 +31,8 @@ const ShopButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #222222;
+    background-color: #e85a4f;
+    color: black;
   }
 `
 
@@ -42,6 +43,10 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  span {
+    color: #d8c3a5;
+  }
 `
 
 const SecondSection = styled(Section)`
@@ -150,7 +155,7 @@ const ReviewsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #eae7dc;
     width: 30%;
     min-width: 150px;
     border-radius: 7px;
@@ -189,7 +194,7 @@ export default function Home({ cart }) {
       <FirstSection>
         <TextContainer>
           <h1>
-            We are Music. <br />
+            We are <span>Music.</span> <br />
             There's no denying.
           </h1>
           <Link to={ROUTES.SHOP}>
