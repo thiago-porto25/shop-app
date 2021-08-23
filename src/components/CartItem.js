@@ -183,7 +183,7 @@ export default function CartItem({ itemInfo, cart, setCart }) {
     <Container>
       <ImageContainer>
         <img
-          src={`./images/products/${itemInfo.id}.jpg`}
+          src={`/images/products/${itemInfo.id}.jpg`}
           alt={productsData[itemInfo.id].name}
         />
       </ImageContainer>

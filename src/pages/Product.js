@@ -200,7 +200,7 @@ export default function Product({ cart, setCart }) {
         <PopUp isVisible={showPopUp} />
         <Frame>
           <ImageContainer>
-            <img src={`./images/products/${id}.jpg`} alt={productsData[id]} />
+            <img src={`/images/products/${id}.jpg`} alt={productsData[id]} />
           </ImageContainer>
           <TextContainer>
             <h1>{productsData[id].name}</h1>
