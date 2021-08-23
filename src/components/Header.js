@@ -94,6 +94,7 @@ const List = styled.ul`
 const ListItem = styled.li`
   margin-left: 0;
   font-size: 20px;
+  width: 40px;
 
   i {
     margin-left: 0;

@@ -66,6 +66,10 @@ const Inner = styled.div`
   background-color: black;
   margin-top: 30px;
   margin-bottom: 30px;
+
+  @media (max-width: 700px) {
+    width: 95%;
+  }
 `
 
 const Line = styled.hr`

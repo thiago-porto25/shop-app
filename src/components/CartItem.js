@@ -6,18 +6,30 @@ const Container = styled.section`
   background: linear-gradient(120deg, #999999, #eeeeee);
   display: flex;
   width: 100%;
+  height: 150px;
   color: black;
   border: 1.5px solid #777777;
-  height: 150px;
   position: relative;
   margin-bottom: 10px;
   border-radius: 5px;
+
+  @media (max-width: 550px) {
+    height: 300px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const DeleteItemContainer = styled.div`
   position: absolute;
   top: 10%;
   right: 1%;
+
+  @media (max-width: 550px) {
+    top: 15px;
+    right: 10px;
+  }
 
   button {
     background-color: transparent;
@@ -47,6 +59,16 @@ const ImageContainer = styled.div`
   height: 150px;
   border-radius: 5px 0 0 5px;
 
+  @media (max-width: 550px) {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+
+    img {
+      height: 90%;
+      width: 150px;
+    }
+  }
+
   img {
     height: 100%;
     object-fit: cover;
@@ -61,9 +83,25 @@ const TextContainer = styled.div`
   height: 100%;
   padding-left: 15px;
 
+  @media (max-width: 550px) {
+    width: 100%;
+  }
+
   h1 {
-    width: 80%;
+    width: 85%;
     word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 700px) {
+      width: 80%;
+      font-size: 20px;
+      height: 50px;
+    }
+
+    @media (max-width: 550px) {
+      white-space: nowrap;
+    }
   }
 
   p {

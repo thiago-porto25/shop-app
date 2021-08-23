@@ -9,6 +9,13 @@ import * as ROUTES from '../constants/Routes'
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 950px) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 `
 
 const Container = styled.div`
@@ -23,6 +30,10 @@ const Container = styled.div`
 
 const Frame = styled.div`
   display: flex;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `
 
 const Inner = styled.div`
@@ -33,6 +44,13 @@ const Inner = styled.div`
   background-color: #111111;
   margin-top: 40px;
   margin-bottom: 40px;
+
+  @media (max-width: 950px) {
+    width: 95%;
+  }
+  @media (max-width: 550px) {
+    width: 85%;
+  }
 `
 
 const ImageContainer = styled.div`
@@ -52,6 +70,11 @@ const ImageContainer = styled.div`
     object-fit: cover;
     overflow: hidden;
   }
+
+  @media (max-width: 550px) {
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+  }
 `
 
 const TextContainer = styled.div`
@@ -60,6 +83,10 @@ const TextContainer = styled.div`
   justify-content: space-evenly;
   width: 70%;
   color: #dddddd;
+
+  @media (max-width: 550px) {
+    width: 100%;
+  }
 
   h1 {
     width: 80%;
@@ -143,7 +170,7 @@ export default function Product({ cart, setCart }) {
     if (cart[0] && isOldItem) setCart(newCart)
     else setCart([...cart, { id, quantity: 1 }])
 
-    setTimeout(() => setShowPopUp(false), 3000)
+    setTimeout(() => setShowPopUp(false), 1000)
   }
 
   const handleGoToCart = () => {

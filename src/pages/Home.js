@@ -23,8 +23,9 @@ const Image = styled.img`
   display: initial;
   width: 60%;
   height: 100%;
+  object-fit: cover;
 
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `

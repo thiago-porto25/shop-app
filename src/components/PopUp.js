@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   position: absolute;
-  top: 17%;
+  top: 6.5rem;
   right: 10px;
   width: 200px;
   height: 80px;
@@ -11,10 +11,14 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   opacity: ${(props) => (props.isVisible ? '1' : '0')};
-  transition: 300ms ease-in-out;
+  transition: 1000ms ease-in-out;
   background-color: #c6f6d5;
   border-radius: 10px;
   border: 1px solid #cccccc;
+
+  @media (max-width: 550px) {
+    top: 50%;
+  }
 
   p {
     width: 80%;
