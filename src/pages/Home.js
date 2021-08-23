@@ -259,7 +259,7 @@ export default function Home({ cart }) {
           </Link>
         </TextContainer>
         <Image
-          src="/images/backgrounds/background1.jpg"
+          src="./images/backgrounds/background1.jpg"
           alt="A vinil player in a white background"
         />
       </FirstSection>
