@@ -81,6 +81,7 @@ export default function Header({ cart }) {
     })
     return quantity
   }
+
   return (
     <Container>
       <Logo>

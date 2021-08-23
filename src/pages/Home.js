@@ -7,7 +7,7 @@ import { Contact, Header, Footer, Section } from '../components'
 const Container = styled.div``
 
 const FirstSection = styled(Section)`
-  background: linear-gradient(120deg, #222222, #ffffff);
+  background: linear-gradient(120deg, #222222, #bbbbbb);
   display: flex;
   justify-content: center;
   overflow: hidden;

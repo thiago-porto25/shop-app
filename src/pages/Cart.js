@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { CartItem, Header, Footer } from '../components'
 import productsData from '../data/productsData'
+import * as ROUTES from '../constants/Routes'
 
 const Container = styled.div`
   display: flex;
@@ -13,7 +15,35 @@ const Container = styled.div`
   height: fit-content;
 `
 
-const CheckoutButton = styled.button``
+const CheckoutButton = styled.button`
+  width: 100%;
+  height: 3rem;
+  background-color: #c6382d;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 200ms ease-out;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: #b5271c;
+    color: white;
+  }
+`
+
+const EmptyCartText = styled.p`
+  color: white;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 20px;
+`
 
 const Frame = styled.div`
   margin: 20px;
@@ -22,6 +52,10 @@ const Frame = styled.div`
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+
+  a {
+    width: 80%;
+  }
 `
 
 const Inner = styled.div`
@@ -77,14 +111,18 @@ export default function Cart({ cart, setCart }) {
       <Header cart={cart} />
       <Inner>
         <Frame>
-          {cart.map((item, i) => (
-            <CartItem
-              key={`${item}-${i}`}
-              itemInfo={item}
-              cart={cart}
-              setCart={setCart}
-            />
-          ))}
+          {cart[0] === undefined ? (
+            <EmptyCartText>You have no items in your cart.</EmptyCartText>
+          ) : (
+            cart.map((item, i) => (
+              <CartItem
+                key={`${item}-${i}`}
+                itemInfo={item}
+                cart={cart}
+                setCart={setCart}
+              />
+            ))
+          )}
         </Frame>
         <Line />
         <Frame>
@@ -93,7 +131,19 @@ export default function Cart({ cart, setCart }) {
             <Total>${(Math.round(total * 100) / 100).toFixed(2)}</Total>
           </TotalLabel>
         </Frame>
-        <CheckoutButton>Checkout</CheckoutButton>
+        <Frame>
+          <Link
+            style={{ pointerEvents: cart[0] === undefined ? 'none' : '' }}
+            to={ROUTES.HOME}
+          >
+            <CheckoutButton
+              disabled={cart[0] === undefined}
+              onClick={() => setCart([])}
+            >
+              Checkout
+            </CheckoutButton>
+          </Link>
+        </Frame>
       </Inner>
       <Footer />
     </Container>

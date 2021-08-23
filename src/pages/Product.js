@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Header, Footer } from '../components'
+import { Header, Footer, PopUp } from '../components'
 import { useRouteMatch, useHistory } from 'react-router'
 import productsData from '../data/productsData'
 import * as ROUTES from '../constants/Routes'
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
 
 const Container = styled.div`
   display: flex;
@@ -12,6 +17,7 @@ const Container = styled.div`
   background: linear-gradient(120deg, #999999, #eeeeee);
   min-height: 100vh;
   height: fit-content;
+  position: relative;
 `
 
 const Frame = styled.div`
@@ -75,7 +81,6 @@ const TextContainer = styled.div`
   }
 
   button {
-    margin: auto;
     margin-bottom: 20px;
     background-color: #e85a4f;
     border: none;
@@ -105,17 +110,42 @@ const TextContainer = styled.div`
     &:hover > i {
       transform: translateX(10px);
     }
+
+    &:last-of-type {
+      background: linear-gradient(120deg, #999999, #eeeeee);
+
+      &:hover {
+        background: linear-gradient(120deg, #222222, #777777);
+      }
+    }
   }
 `
 
 export default function Product({ cart, setCart }) {
+  const [showPopUp, setShowPopUp] = useState(false)
   const [isCartFull, setIsCartFull] = useState(false)
   const {
     params: { id },
   } = useRouteMatch()
   const history = useHistory()
 
+  const checkQuantity = () => {
+    let bool = false
+    cart.forEach((item) => {
+      if (item.id === id && item.quantity >= 9) {
+        bool = true
+      }
+    })
+    return bool
+  }
+
   const handleAddToCart = () => {
+    if (checkQuantity()) {
+      setIsCartFull(true)
+    }
+
+    setShowPopUp(true)
+
     const newCart = cart.map((item) => {
       if (item.id === id) {
         item.quantity += 1
@@ -126,17 +156,22 @@ export default function Product({ cart, setCart }) {
     if (cart[0] && isOldItem) setCart(newCart)
     else setCart([...cart, { id, quantity: 1 }])
 
+    setTimeout(() => setShowPopUp(false), 3000)
+  }
+
+  const handleGoToCart = () => {
     history.push(ROUTES.CART)
   }
 
   useEffect(() => {
-    if (cart.length >= 20) setIsCartFull(true)
+    if (cart.length >= 99) setIsCartFull(true)
   }, [cart])
 
   return (
     <Container>
       <Header cart={cart} />
       <Inner>
+        <PopUp isVisible={showPopUp} />
         <Frame>
           <ImageContainer>
             <img src={`/images/products/${id}.jpg`} alt={productsData[id]} />
@@ -147,17 +182,22 @@ export default function Product({ cart, setCart }) {
               ${(Math.round(productsData[id].price * 100) / 100).toFixed(2)}
             </h3>
             <p>{productsData[id].description}</p>
-            <button disabled={isCartFull} onClick={handleAddToCart}>
-              {isCartFull ? (
-                <>
-                  Full <i className="fas fa-shopping-cart"></i>
-                </>
-              ) : (
-                <>
-                  Add <i className="fas fa-shopping-cart"></i>
-                </>
-              )}
-            </button>
+            <ButtonsContainer>
+              <button disabled={isCartFull} onClick={handleAddToCart}>
+                {isCartFull ? (
+                  <>
+                    Full <i className="fas fa-shopping-cart"></i>
+                  </>
+                ) : (
+                  <>
+                    Add to <i className="fas fa-shopping-cart"></i>
+                  </>
+                )}
+              </button>
+              <button onClick={handleGoToCart}>
+                Go to <i className="fas fa-shopping-cart"></i>
+              </button>
+            </ButtonsContainer>
           </TextContainer>
         </Frame>
       </Inner>
