@@ -25,8 +25,14 @@ const Inner = styled.div`
 `
 
 const Text = styled.h1`
+  text-align: center;
+  word-wrap: break-word;
   margin: 0;
   font-size: 45px;
+
+  @media (max-width: 700px) {
+    font-size: 40px;
+  }
 `
 
 export default function NotFound({ cart }) {
