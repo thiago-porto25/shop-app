@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Header, Footer, PopUp } from '../components'
@@ -129,21 +130,7 @@ export default function Product({ cart, setCart }) {
   } = useRouteMatch()
   const history = useHistory()
 
-  const checkQuantity = () => {
-    let bool = false
-    cart.forEach((item) => {
-      if (item.id === id && item.quantity >= 9) {
-        bool = true
-      }
-    })
-    return bool
-  }
-
   const handleAddToCart = () => {
-    if (checkQuantity()) {
-      setIsCartFull(true)
-    }
-
     setShowPopUp(true)
 
     const newCart = cart.map((item) => {
@@ -164,7 +151,19 @@ export default function Product({ cart, setCart }) {
   }
 
   useEffect(() => {
-    if (cart.length >= 99) setIsCartFull(true)
+    const checkQuantity = () => {
+      let bool = false
+      cart.forEach((item) => {
+        if (item.id === id && item.quantity >= 10) {
+          bool = true
+        }
+      })
+      return bool
+    }
+
+    if (checkQuantity() || cart.length >= 99) {
+      setIsCartFull(true)
+    }
   }, [cart])
 
   return (
