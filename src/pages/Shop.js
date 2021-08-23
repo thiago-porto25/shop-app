@@ -11,7 +11,6 @@ const Container = styled.div`
 const Inner = styled.div`
   margin: auto;
   width: 70%;
-  min-width: 700px;
   height: fit-content;
   display: grid;
   justify-items: center;
