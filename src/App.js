@@ -20,13 +20,13 @@ function App() {
         <Route exact path={ROUTES.SHOP}>
           <Shop cart={cart} />
         </Route>
-        <Route path={ROUTES.PRODUCT}>
+        <Route exact path={ROUTES.PRODUCT}>
           <Product cart={cart} setCart={setCart} />
         </Route>
-        <Route path={ROUTES.CART}>
+        <Route exact path={ROUTES.CART}>
           <Cart cart={cart} setCart={setCart} />
         </Route>
-        <Route path={ROUTES.NOT_FOUND}>
+        <Route exact path={ROUTES.NOT_FOUND}>
           <NotFound cart={cart} />
         </Route>
         <Route>
