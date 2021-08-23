@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { globalStyle as GlobalStyle } from './globalStyles'
 import Cart from './pages/Cart'
 import Home from './pages/Home'
@@ -28,6 +28,9 @@ function App() {
         </Route>
         <Route path={ROUTES.NOT_FOUND}>
           <NotFound cart={cart} />
+        </Route>
+        <Route>
+          <Redirect to={ROUTES.NOT_FOUND} />
         </Route>
       </Switch>
     </>
