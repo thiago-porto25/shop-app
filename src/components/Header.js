@@ -14,9 +14,9 @@ const CartCounter = styled.div`
   border-radius: 50%;
   text-align: center;
   transform: translateX(-20px);
-  padding-top: 3px;
-  padding-right: 2.5px;
-  padding-left: 1.5px;
+  padding-top: 3px !important;
+  padding-right: 2.5px !important;
+  padding-left: 1.5px !important;
 `
 
 const Container = styled.nav`
@@ -25,6 +25,12 @@ const Container = styled.nav`
   display: flex;
   align-items: center;
   position: relative;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+  }
 `
 const Logo = styled.h1`
   font-size: 35px;
@@ -34,6 +40,13 @@ const Logo = styled.h1`
 
   span {
     color: #e85a4f;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 30px;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 30px;
   }
 `
 
@@ -59,6 +72,21 @@ const List = styled.ul`
 
     &:hover > ${CartCounter} {
       background-color: #d8c3a5;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0;
+    list-style-type: none;
+    justify-content: space-evenly;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    right: 0;
+
+    * {
+      padding: 0;
+      margin: 0;
     }
   }
 `

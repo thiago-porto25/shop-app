@@ -7,15 +7,26 @@ import { Contact, Header, Footer, Section } from '../components'
 const Container = styled.div``
 
 const FirstSection = styled(Section)`
-  background: linear-gradient(120deg, #222222, #bbbbbb);
+  background: linear-gradient(120deg, #222222, #999999);
   display: flex;
   justify-content: center;
   overflow: hidden;
+
+  @media (max-width: 700px) {
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const Image = styled.img`
+  display: initial;
   width: 60%;
   height: 100%;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `
 
 const ShopButton = styled.button`
@@ -43,6 +54,11 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
+  @media (max-width: 700px) {
+    height: 95vh !important;
+  }
 
   span {
     color: #d8c3a5;
@@ -63,6 +79,16 @@ const SecondSection = styled(Section)`
     font-size: 52px;
     font-weight: bold;
     padding-top: 50px;
+
+    @media (max-width: 500px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 35px;
+      word-wrap: break-word;
+      text-align: center;
+    }
   }
 
   p {
@@ -131,16 +157,26 @@ const ThirdSection = styled(Section)`
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
+  height: fit-content;
 
   header {
     font-size: 52px;
     font-weight: bold;
+    margin-top: 30px;
 
     hr {
       color: black;
       background-color: black;
       width: 200px;
       height: 5px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 40px;
+      text-align: center;
+      word-wrap: break-word;
     }
   }
 `
@@ -160,6 +196,18 @@ const ReviewsContainer = styled.div`
     min-width: 150px;
     border-radius: 7px;
     box-shadow: 0px 0px 8px #00000066;
+
+    @media (max-width: 1000px) {
+      width: 70%;
+
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      width: 95%;
+    }
 
     p {
       margin: 20px;
@@ -184,6 +232,14 @@ const ReviewsContainer = styled.div`
       margin: 10px;
       margin-bottom: 30px;
     }
+  }
+
+  @media (max-width: 1000px) {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 40px;
   }
 `
 

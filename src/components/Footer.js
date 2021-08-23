@@ -25,6 +25,8 @@ const Text = styled.p`
   font-style: italic;
   pointer-events: none;
   color: #e85a4f;
+  word-wrap: break-word;
+  text-align: center;
 `
 
 export default function Footer({ children }) {
