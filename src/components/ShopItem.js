@@ -65,7 +65,7 @@ export default function ShopItem({ item }) {
   return (
     <Container>
       <ImageContainer>
-        <img src={`/images/products/${item.id}.jpg`} alt={item.name} />
+        <img src={`./images/products/${item.id}.jpg`} alt={item.name} />
       </ImageContainer>
       <InfoContainer>
         <h3>{item.name}</h3>
