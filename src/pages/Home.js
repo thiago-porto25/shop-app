@@ -317,7 +317,7 @@ export default function Home({ cart }) {
               auctor.
             </p>
             <img
-              src="/images/backgrounds/profile1.jpg"
+              src="./images/backgrounds/profile1.jpg"
               alt="Customer profile"
             />
             <h3>Azubu Mafu</h3>
@@ -330,7 +330,7 @@ export default function Home({ cart }) {
               eget turpis faucibus imperdiet. In hac habitasse platea dictumst.
             </p>
             <img
-              src="/images/backgrounds/profile2.jpg"
+              src="./images/backgrounds/profile2.jpg"
               alt="Customer profile"
             />
             <h3>Alexander Burr</h3>
@@ -344,7 +344,7 @@ export default function Home({ cart }) {
               sed dictum elit.
             </p>
             <img
-              src="/images/backgrounds/profile3.jpg"
+              src="./images/backgrounds/profile3.jpg"
               alt="Customer profile"
             />
             <h3>Paul Starr</h3>
