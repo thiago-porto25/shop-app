@@ -1,9 +1,9 @@
-export const CART = '/shop-app/cart'
+export const CART = '/cart'
 
-export const HOME = '/shop-app/'
+export const HOME = '/'
 
-export const NOT_FOUND = '/shop-app/not-found'
+export const NOT_FOUND = '/not-found'
 
-export const PRODUCT = '/shop-app/shop/:id'
+export const PRODUCT = '/shop/:id'
 
-export const SHOP = '/shop-app/shop'
+export const SHOP = '/shop'
